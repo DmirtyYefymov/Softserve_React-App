@@ -1,0 +1,22 @@
+.page-footer-container{
+    text-align: center;
+    margin-top: 20px;
+    padding: 25px 35px;
+    border: 2px solid rgb(245, 69, 69); 
+    border-bottom: none;
+}
+
+.additional-info-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.page-footer-description-container{
+    width: 200px;
+}
+
+#copyright-title{
+    color: gray;
+    font-weight: lighter;
+}

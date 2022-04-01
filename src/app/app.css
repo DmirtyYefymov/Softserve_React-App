@@ -1,0 +1,10 @@
+.app {
+    margin: 0 auto;
+}
+
+.button-primary{
+    background-color: rgb(245, 69, 69);
+    color: white;
+    font-weight: bold;
+    margin: 15px 10px;
+}

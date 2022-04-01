@@ -1,0 +1,11 @@
+.products-cards-list-container{
+    text-align: center;
+}
+
+.products-cards-list-body{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: 25px 25px;
+}
