@@ -1,0 +1,7 @@
+.social-network-logo-img{
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    padding: 0px 7px;
+    border-radius: 50%;
+}

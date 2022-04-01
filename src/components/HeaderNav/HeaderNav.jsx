@@ -1,9 +1,9 @@
-
+import React from 'react';
 import './header-nav.css';
 
 const HeaderNav = () => {
     return (
-        <nav className="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-md navbar-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">
                     <img src="https://static.cdnlogo.com/logos/g/43/g-shock-casio.svg" alt="" width="50" height="50"/>
