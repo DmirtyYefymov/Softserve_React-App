@@ -3,9 +3,7 @@ import { Link, useMatch, useResolvedPath } from 'react-router-dom';
 
 const CustomReactRouterLink = ({children, to, ...props}) => {
     let resolved = useResolvedPath(to);
-    console.log(resolved);
     let match = useMatch({ path: resolved.pathname, end: true });
-    console.log(match)
 
   return (
     <>
