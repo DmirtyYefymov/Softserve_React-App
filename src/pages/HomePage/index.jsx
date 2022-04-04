@@ -1,7 +1,7 @@
 import React from 'react';
 import HeaderNav from '../../components/HeaderNav/HeaderNav';
-import PageHeading from '../../components/PageHeading/PageHeading';
-import ProductCardsList from '../../components/ProductCardsList';
+import PageHeading from './PageHeading/PageHeading';
+import ProductCardsList from './ProductCardsList';
 import PageFooter from '../../components/PageFooter';
 
 const PageHeadingProps = {
