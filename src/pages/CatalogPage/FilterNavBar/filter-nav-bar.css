@@ -1,6 +1,6 @@
 .filter-nav-bar {
     margin: 0 auto;
-    width: 1300px;
+    max-width: 1300px;
     height: 70px;
     display: flex;
     justify-content: space-between;
@@ -10,7 +10,7 @@
 .search input {
     border-radius: 30px;
     padding-left: 30px;
-    width: 300px;
+    width: 270px;
 }
 
 .filtres {

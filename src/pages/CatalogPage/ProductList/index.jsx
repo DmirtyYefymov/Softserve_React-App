@@ -5,8 +5,9 @@ import './product-item.css';
 const ProductList = ({data}) => {
 
     const products = data.map(item => {
+        const{id, ...itemProps} = item;
         return (
-            <ProductListItem {...item}/>
+            <ProductListItem key={id} {...itemProps}/>
         )
     })
 
