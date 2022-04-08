@@ -1,0 +1,33 @@
+.main-container{
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 20px;
+}
+.main-img-container{
+  margin: 0px 60px;
+}
+.main-product-img{
+  height: 300px;
+}
+.product-parameters-container{
+  display: flex;
+  justify-content: flex-start;
+  margin: 15px 10px;
+}
+.product-parameters-box{
+  width: 45px;
+  height: 45px;
+  margin: 0px 7px;
+  font-size: 15px;
+  text-align: center;
+  border-radius: 8px;
+  border: 2px solid black;
+}
+.main-img-container{
+  border: 1px solid black;
+}
+.priceContainer{
+  font-size: 30px;
+  width: 180px;
+  border: 1px solid salmon;
+}

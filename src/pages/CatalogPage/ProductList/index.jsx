@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ProductListItem from "../ProductListItem";
 
@@ -6,7 +6,7 @@ import './product-item.css';
 
 const ProductList = ({products}) => {
     const [value, setValue] = useState("");
-    console.log(products);
+    const [filteredItems, setFiltereItems] = useState(products);
     
     const [state, setState] = useState({
         color: "All colors",
@@ -27,13 +27,16 @@ const ProductList = ({products}) => {
     }
 
 
-
-    const filtredItems = data.filter(item => {
-        return item.title.toLowerCase().includes(value.toLowerCase())
-    })
+    useEffect( () => {
+      setFiltereItems(products)
+    }, [])
+    // const filtredItems = data.filter(item => {
+    //     return item.title.toLowerCase().includes(value.toLowerCase())
+    // })
+    
     return (
         <div className="container">
-            <div className="filter-nav-bar">
+            {/* <div className="filter-nav-bar">
                 <div className="search">
                     <input type="search" 
                     placeholder="Search"
@@ -73,14 +76,14 @@ const ProductList = ({products}) => {
                         <option key={i}>{d.size}</option>
                         ))}
                     </select>
-                    {/* <button className="btn btn-danger" type="submit">Apply</button> */}
-                </div>
-            </div>
+                    <button className="btn btn-danger" type="submit">Apply</button>
+                 </div>
+            </div> */}
             <div className="items d-flex justify-content-between">
-                {filtredItems.map(item => {
+                {products.map(item => {
                     const{id, ...itemProps} = item;
                     return (
-                        <ProductListItem key={id}  {...itemProps} />
+                        <ProductListItem key={id} product={item} {...itemProps}/>
                     )
                 })}
             </div>

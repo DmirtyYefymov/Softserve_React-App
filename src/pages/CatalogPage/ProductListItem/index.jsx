@@ -1,19 +1,26 @@
 import './product-items-list.css';
+import { useNavigate } from 'react-router-dom';
 
 
-const ProductListItem = ({title, description, imgUrl, price}) => {
+const ProductListItem = ({product}) => {
+  const navigate = useNavigate();
+  const handleSingleProductPage = () => {
+    navigate(`/singleProduct/${product.id}`);
+  }
     return (
         <div className="card-item">
-            <img className='card-image' src={imgUrl} alt="sss" />
+            <img className='card-image' src={product.imgUrl} alt="sss" />
             <div className='card-body'>
-                <h4 className='card-title'>{title}</h4>
-                <p className='card-text'>{description}</p>
+                <h4 className='card-title'>{product.title}</h4>
+                <p className='card-text'>{product.description}</p>
             </div>
             <div className="card-price">
                 <h5 className="price-txt">Price</h5>
-                <div className="price-dollar">{price + '$'}</div>
+                <div className="price-dollar">{product.price + '$'}</div>
             </div>
-            <button className="btn btn-danger" type="button">View more</button>
+            <button className="btn btn-danger" type="button" onClick={handleSingleProductPage}>
+              View more
+            </button>
         </div>
     );
 }
