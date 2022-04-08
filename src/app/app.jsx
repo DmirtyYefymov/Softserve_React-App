@@ -5,7 +5,7 @@ import MainRouter from '../router';
 import './app.css';
 
 function App() {
-  const [products, setProducts] = useState('');
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3000/products') 

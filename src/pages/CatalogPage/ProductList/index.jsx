@@ -1,36 +1,59 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import ProductListItem from "../ProductListItem";
 
 import './product-item.css';
 
-const ProductList = ({products}) => {
+const ProductList = () => {
     const [value, setValue] = useState("");
-    console.log(products);
+
+    let [products, setProducts] = useState([]);
+    const getProducts = () => {
+        fetch('http://localhost:3001/products') 
+        .then(res => res.json())
+        .then(prods => setProducts(prods))
+    }
+
+    useEffect(() => {
+        getProducts();
+    }, [])
+
     
-    const [state, setState] = useState({
-        color: "All colors",
-        type: "All types",
+    const [stateColor, setStateColor] = useState({
+        color: "All colors"
+    });
+    const [stateType, setStateType] = useState({
+        type: "All types"
+    });
+    const [stateSize, setStateSize] = useState({
         size: "All sizes"
     });
 
-    function handleChange({ target: { name, value } }) {
-        setState((prev) => ({ ...prev, [name]: value }));
+    function handleChangeColor({ target: { name, value } }) {
+        setStateColor((prev) => ({ ...prev, [name]: value }));
     }
-    let data = state.data;
-    if (state.color && state.color !== "All colors") {
-        data = data.filter((d) => d.color === state.color);
-    } if (state.type && state.type !== "All types") {
-        data = data.filter((d) => d.type === state.type);
-    }  if (state.size && state.size !== "All sizes") {
-        data = data.filter((d) => d.size === state.size);
+    function handleChangeType({ target: { name, value } }) {
+        setStateType((prev) => ({ ...prev, [name]: value }));
+    }
+    function handleChangeSize({ target: { name, value } }) {
+        setStateSize((prev) => ({ ...prev, [name]: value }));
     }
 
 
+    if (stateColor.color && stateColor.color !== "All colors") {
+        products = products.filter((d) => d.color === stateColor.color);
+    } if (stateType.type && stateType.type !== "All types") {
+        products = products.filter((d) => d.type === stateType.type);
+    }  if (stateSize.size && stateSize.size !== "All sizes") {
+        products = products.filter((d) => d.size === stateSize.size);
+    }
 
-    const filtredItems = data.filter(item => {
+
+    const filtredItems = products.filter(item => {
         return item.title.toLowerCase().includes(value.toLowerCase())
     })
+
+
     return (
         <div className="container">
             <div className="filter-nav-bar">
@@ -44,10 +67,11 @@ const ProductList = ({products}) => {
                     className="filtres-select"
                     id="color"
                     name="color"
-                    value={state.color}
-                    onChange={handleChange} >
-                        <option value="color">All colors</option>
-                        {state.data.map((d, i) => (
+                    value={stateColor.color}
+                    onChange={handleChangeColor} >
+                        <option 
+                        value="colors">All colors</option>
+                        {products.map((d, i) => (
                         <option key={i}>{d.color}</option>
                         ))}
                     </select>
@@ -55,10 +79,10 @@ const ProductList = ({products}) => {
                     className="filtres-select"
                     id="type"
                     name="type"
-                    value={state.type}
-                    onChange={handleChange} >
-                        <option value="type">All types</option>
-                        {state.data.map((d, i) => (
+                    value={stateType.type}
+                    onChange={handleChangeType} >
+                        <option value="types">All types</option>
+                        {products.map((d, i) => (
                         <option key={i}>{d.type}</option>
                         ))}
                     </select>
@@ -66,10 +90,10 @@ const ProductList = ({products}) => {
                     className="filtres-select"
                     id="size"
                     name="size"
-                    value={state.size}
-                    onChange={handleChange} >
-                        <option value="size">All sizes</option>
-                        {state.data.map((d, i) => (
+                    value={stateSize.size}
+                    onChange={handleChangeSize} >
+                        <option value="sizes">All sizes</option>
+                        {products.map((d, i) => (
                         <option key={i}>{d.size}</option>
                         ))}
                     </select>
