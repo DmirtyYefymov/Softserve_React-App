@@ -6,7 +6,7 @@ import './product-item.css';
 
 const ProductList = ({products}) => {
     const [value, setValue] = useState("");
-    console.log(products);
+
     
     const [state, setState] = useState({
         color: "All colors",
@@ -17,15 +17,14 @@ const ProductList = ({products}) => {
     function handleChange({ target: { name, value } }) {
         setState((prev) => ({ ...prev, [name]: value }));
     }
-    let data = state.data;
     if (state.color && state.color !== "All colors") {
-        data = data.filter((d) => d.color === state.color);
+        products = products.filter((d) => d.color === state.color);
     } if (state.type && state.type !== "All types") {
-        data = data.filter((d) => d.type === state.type);
+        products = products.filter((d) => d.type === state.type);
     }  if (state.size && state.size !== "All sizes") {
-        data = data.filter((d) => d.size === state.size);
+        products = products.filter((d) => d.size === state.size);
     }
-
+    // let data = state.data;
 
 
     const filtredItems = data.filter(item => {
@@ -64,9 +63,6 @@ const ProductList = ({products}) => {
                     </select>
                     <select 
                     className="filtres-select"
-                    id="size"
-                    name="size"
-                    value={state.size}
                     onChange={handleChange} >
                         <option value="size">All sizes</option>
                         {state.data.map((d, i) => (
