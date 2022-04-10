@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductListItem = ({product}) => {
   const navigate = useNavigate();
-  const handleSingleProductPage = () => {
-    navigate(`/singleProduct/${product.id}`);
-  }
+  // const handleSingleProductPage = () => {
+  //   navigate(`/singleProduct/${product.id}`);
+  // }
     return (
         <div className="card-item">
             <img className='card-image' src={product.imgUrl} alt="sss" />
@@ -18,7 +18,8 @@ const ProductListItem = ({product}) => {
                 <h5 className="price-txt">Price</h5>
                 <div className="price-dollar">{product.price + '$'}</div>
             </div>
-            <button className="btn btn-danger" type="button" onClick={handleSingleProductPage}>
+            {/* <button className="btn btn-danger" type="button" onClick={handleSingleProductPage}> */}
+            <button className="btn btn-danger" type="button">
               View more
             </button>
         </div>
