@@ -26,31 +26,19 @@ const SingleProduct = ({ products }) => {
         <h3><b>{product.title}</b></h3>
         <div className='product-parameters-container'>
           {product.size.map( size => {
-            if (size === sizeRef.current) {
               return (
-                <div className='product-parameters-box shadow p-3 mb-5 bg-white rounded' key={size}>{size}</div>
-              )
-            } else return (
               <div className='product-parameters-box' key={size}>{size}</div>
             )
-          })}
+            })}
         </div>
         <div className='product-parameters-container'>
           {product.color.map( color => {
-            if (color === colorRef.current) {
               return (
-                <div 
-                  className='product-parameters-box shadow p-3 mb-5 bg-white rounded' 
-                  key={color}
-                  style={{backgroundColor: color}}
-                ></div>
-              )
-            } else return (
               <div className='product-parameters-box' 
                 style={{backgroundColor: color}} key={color}
               ></div>
-            )
-          })}
+              )
+            })}
           </div>
         <p>{product.description}</p>
         <div className='priceContainer shadow p-3 mb-5 bg-white rounded'><b>{product.price}</b> UAH</div>
