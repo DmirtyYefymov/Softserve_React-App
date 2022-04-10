@@ -1,52 +1,39 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ProductListItem from "../ProductListItem";
 
 import './product-item.css';
 
-const ProductList = () => {
+const ProductList = ({products}) => {
     const [value, setValue] = useState("");
-    const [filteredItems, setFiltereItems] = useState(products);
+    console.log(products);
     
-    const [stateColor, setStateColor] = useState({
-        color: "All colors"
-    });
-    const [stateType, setStateType] = useState({
-        type: "All types"
-    });
-    const [stateSize, setStateSize] = useState({
+    const [state, setState] = useState({
+        color: "All colors",
+        type: "All types",
         size: "All sizes"
     });
 
-    function handleChangeColor({ target: { name, value } }) {
-        setStateColor((prev) => ({ ...prev, [name]: value }));
+    function handleChange({ target: { name, value } }) {
+        setState((prev) => ({ ...prev, [name]: value }));
     }
-    function handleChangeType({ target: { name, value } }) {
-        setStateType((prev) => ({ ...prev, [name]: value }));
-    }
-    function handleChangeSize({ target: { name, value } }) {
-        setStateSize((prev) => ({ ...prev, [name]: value }));
-    }
-
-
-    if (stateColor.color && stateColor.color !== "All colors") {
-        products = products.filter((d) => d.color === stateColor.color);
-    } if (stateType.type && stateType.type !== "All types") {
-        products = products.filter((d) => d.type === stateType.type);
-    }  if (stateSize.size && stateSize.size !== "All sizes") {
-        products = products.filter((d) => d.size === stateSize.size);
+    let data = state.data;
+    if (state.color && state.color !== "All colors") {
+        data = data.filter((d) => d.color === state.color);
+    } if (state.type && state.type !== "All types") {
+        data = data.filter((d) => d.type === state.type);
+    }  if (state.size && state.size !== "All sizes") {
+        data = data.filter((d) => d.size === state.size);
     }
 
-    useEffect( () => {
-      setFiltereItems(products)
-    }, [])
-    // const filtredItems = data.filter(item => {
-    //     return item.title.toLowerCase().includes(value.toLowerCase())
-    // })
-    
+
+
+    const filtredItems = data.filter(item => {
+        return item.title.toLowerCase().includes(value.toLowerCase())
+    })
     return (
         <div className="container">
-            {/* <div className="filter-nav-bar">
+            <div className="filter-nav-bar">
                 <div className="search">
                     <input type="search" 
                     placeholder="Search"
@@ -57,11 +44,10 @@ const ProductList = () => {
                     className="filtres-select"
                     id="color"
                     name="color"
-                    value={stateColor.color}
-                    onChange={handleChangeColor} >
-                        <option 
-                        value="colors">All colors</option>
-                        {products.map((d, i) => (
+                    value={state.color}
+                    onChange={handleChange} >
+                        <option value="color">All colors</option>
+                        {state.data.map((d, i) => (
                         <option key={i}>{d.color}</option>
                         ))}
                     </select>
@@ -69,10 +55,10 @@ const ProductList = () => {
                     className="filtres-select"
                     id="type"
                     name="type"
-                    value={stateType.type}
-                    onChange={handleChangeType} >
-                        <option value="types">All types</option>
-                        {products.map((d, i) => (
+                    value={state.type}
+                    onChange={handleChange} >
+                        <option value="type">All types</option>
+                        {state.data.map((d, i) => (
                         <option key={i}>{d.type}</option>
                         ))}
                     </select>
@@ -80,16 +66,16 @@ const ProductList = () => {
                     className="filtres-select"
                     id="size"
                     name="size"
-                    value={stateSize.size}
-                    onChange={handleChangeSize} >
-                        <option value="sizes">All sizes</option>
-                        {products.map((d, i) => (
+                    value={state.size}
+                    onChange={handleChange} >
+                        <option value="size">All sizes</option>
+                        {state.data.map((d, i) => (
                         <option key={i}>{d.size}</option>
                         ))}
                     </select>
                     <button className="btn btn-danger" type="submit">Apply</button>
                  </div>
-            </div> */}
+            </div>
             <div className="items d-flex justify-content-between">
                 {products.map(item => {
                     const{id, ...itemProps} = item;
