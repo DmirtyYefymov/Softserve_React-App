@@ -6,7 +6,7 @@ import CartPage from '../pages/CartPage';
 import SingleProduct from '../pages/SingleProductPage';
 
 const MainRouter = () => {
-  const [products, setProducts] = useState('');
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch('http://localhost:3001/products') 
