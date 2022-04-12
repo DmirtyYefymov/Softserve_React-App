@@ -6,7 +6,6 @@ import './product-item.css';
 
 const ProductList = ({products}) => {
     const [filteredProducts, setFilteredProducts] = useState(products);
-    console.log(filteredProducts)
     const [state, setState] = useState({
         color: "All colors",
         type: "All types",

@@ -4,9 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductListItem = ({product}) => {
   const navigate = useNavigate();
-  // const handleSingleProductPage = () => {
-  //   navigate(`/singleProduct/${product.id}`);
-  // }
+  if (!product || product.length === 0) return <p>Нет данных.</p>
     return (
         <div className="card-item">
             <img className='card-image' src={product.imgUrl} alt="sss" />
